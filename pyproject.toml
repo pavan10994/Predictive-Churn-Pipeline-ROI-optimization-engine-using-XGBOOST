@@ -14,5 +14,10 @@ dependencies = [
     "xgboost",
     "shap",
     "kaggle",
-    "pandera"
+    "pandera",
+    "matplotlib"
+    "fastapi",
+    "uvicorn",
+    "streamlit",
+    "requests"
 ]
