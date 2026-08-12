@@ -1,0 +1,8 @@
+
+--- Business Impact & ROI Report ---
+Total Customers Analyzed: 7043
+High-Risk Users Targeted: 2748
+Total Campaign Cost: $54,960.00
+Estimated Revenue Saved: $222,087.36
+Net Profit of Campaign: $167,127.36
+Campaign ROI: 304.09%

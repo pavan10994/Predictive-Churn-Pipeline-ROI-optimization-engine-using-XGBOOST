@@ -1,0 +1,12 @@
+# Ignore virtual environments
+venv/
+__pycache__/
+
+# Ignore data and models (DVC handles these)
+data/
+src/models/*.json
+src/models/*.pkl
+
+# Ignore sensitive Kaggle keys if you ever save them here
+kaggle.json
+.env

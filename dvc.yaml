@@ -1,0 +1,46 @@
+stages:
+  ingest:
+    cmd: python src/data_pipeline/ingest.py
+    outs:
+      - data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+
+  validate:
+    cmd: python src/data_pipeline/validate.py
+    deps:
+      - data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+      - src/data_pipeline/validate.py
+
+  build_features:
+    cmd: python src/features/build_features.py
+    deps:
+      - data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv
+      - src/features/build_features.py
+    outs:
+      - data/processed/processed_churn_data.csv
+
+  train:
+    cmd: python src/models/train_xgboost.py
+    deps:
+      - data/processed/processed_churn_data.csv
+      - src/models/train_xgboost.py
+    outs:
+      - src/models/xgboost_churn_model.json
+      - src/models/model_features.pkl
+
+  explain:
+    cmd: python src/models/explain_shap.py
+    deps:
+      - data/processed/processed_churn_data.csv
+      - src/models/xgboost_churn_model.json
+      - src/models/explain_shap.py
+    outs:
+      - reports/shap_summary.png
+
+  business_impact:
+    cmd: python src/business_engine/roi_optimizer.py
+    deps:
+      - data/processed/processed_churn_data.csv
+      - src/models/xgboost_churn_model.json
+      - src/business_engine/roi_optimizer.py
+    outs:
+      - reports/business_impact.txt
