@@ -41,7 +41,7 @@ if submit:
     try:
         # 2. Send the data to our FastAPI server
         with st.spinner("Analyzing risk profile..."):
-            api_url = "http://127.0.0.1:8000/predict"
+            api_url = "https://predictive-churn-pipeline-roi-d9w9.onrender.com/predict"
             response = requests.post(api_url, json=customer_data)
             result = response.json()
             
@@ -69,4 +69,6 @@ if submit:
                 st.metric(label="Action Recommendation", value="No intervention needed")
                 
     except Exception as e:
-        st.error("⚠️ Error: Cannot connect to the API. Make sure your FastAPI server is running!")
+        st.error(f"⚠️ Code Error: {e}")
+        if 'response' in locals():
+            st.write("Server actually said:", response.text)
