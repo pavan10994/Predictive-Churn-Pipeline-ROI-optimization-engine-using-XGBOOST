@@ -10,3 +10,7 @@ fastapi
 uvicorn
 streamlit
 requests
+fastapi
+uvicorn
+streamlit
+requests
