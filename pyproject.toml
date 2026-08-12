@@ -1,12 +1,7 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "telco_churn_roi_pipeline"
+name = "telco-churn-pipeline"
 version = "0.1.0"
-description = "MLOps Pipeline for Telco Churn"
-requires-python = ">=3.9"
+description = "Predictive Churn Pipeline and ROI Engine"
 dependencies = [
     "pandas",
     "numpy",
@@ -15,7 +10,7 @@ dependencies = [
     "shap",
     "kaggle",
     "pandera",
-    "matplotlib"
+    "matplotlib",
     "fastapi",
     "uvicorn",
     "streamlit",
